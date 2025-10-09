@@ -147,6 +147,7 @@ $i = 10;
 while ($i <= 11 && $i >= 0) {
     echo "<br>$i";
     $i--;
+    
 }
 echo "<br>Feliz año nuevo";
 
@@ -161,12 +162,59 @@ foreach ($alumnos as $key => $value) {
 echo "<hr><br>Listado de productos";
 
 $productos = [
-    ["nombre" => "Teclado", "precio" => 50],
-    ["nombre" => "Raton", "precio" => 25],
-    ["nombre" => "Monitor", "precio" => 200]
+    ["Nombre" => "Teclado", "Precio" => 50],
+    ["Nombre" => "Raton", "Precio" => 25],
+    ["Nombre" => "Monitor", "Precio" => 200]
 ];
 
-foreach ($productos as $key => $value) {
-    echo "<br> Alumno: " . $value;
-
+foreach ($productos as $producto) {
+    echo "<br> Nombre: " . $producto["Nombre"];
+    echo "<br> Precio: " . $producto["Precio"];
 }
+
+echo "<hr><br><h3>Ejercicio 5</h3>";
+echo "<hr><br>Ficha de usuario";
+
+
+$Usuario = ["Nombre" => "David", "Edad" => 19, "Email" => "david@hola.com", "Estudiante" => True];
+$estudia;
+
+if ($Usuario["Estudiante"] == true) {
+    $estudia = "Si";
+} else {
+    $estudia = "No";
+}
+
+echo "<br> Nombre: " . $Usuario["Nombre"];
+echo "<br> Edad: " . $Usuario["Edad"];
+echo "<br> Email: " . $Usuario["Email"];
+echo "<br> Estudia?: " . $estudia;
+
+
+echo "<hr><br>Filtrado de notas";
+
+
+$notas = [9.5, 5.2, 7.0, 6, 4, 8, 10];
+
+foreach ($notas as $Notas) {
+    if ($Notas >= 5) {
+        echo " <br>$Notas";
+    }
+}
+
+echo "<hr><br>Lista compra avanzada";
+
+$listaCompra = [
+"Frutas" => ["Manzanas", "Plátanos", "Naranjas"],
+"Lácteos" => ["Leche", "Queso", "Leche de Mípalo"],
+"Limpieza" => ["Detergente", "Lejía"]
+];
+
+foreach ($listaCompra as $categoria => $items) {
+    foreach ($items as $item) {
+        echo "<br>$item";
+    }
+}
+
+echo "<hr><br>Calcular total carro";
+
