@@ -51,11 +51,33 @@ function validadorContraseña($pass) {
 
 function encontrarMaximo($array) {
 
-    foreach ($array as $key => $value) {
-        
+    $maximo = $array[0];
+
+    foreach ($array as $numero) {
+        if ($numero > $maximo) {
+            $maximo = $numero;
+        }
     }
+
+    return $maximo;
     
 }
+
+
+//Filtrar por criterios
+
+function filtrarUsuariosActivosMayores($usuarios) {
+    $resultado = [];
+
+    foreach ($usuarios as $usuario) {
+        if ($usuario['activo'] && $usuario['edad'] >= 18) {
+            $resultado[] = $usuario;
+        }
+    }
+
+    return $resultado;
+}
+
 
 //comprobaciones
 //EJ1
@@ -79,3 +101,19 @@ $contra = "abcdefghijK";  // >8 caracteres + mayúscula pero sin número
 echo "<br>Más de 8 chars con mayúscula sin número: " . validadorContraseña($contra);
 $contra = "Abcdef123456";  // >8 caracteres + mayúscula + número
 echo "<br>Más de 8 chars con mayúscula y número: " . validadorContraseña($contra);
+
+//EJ4
+echo "<br><br>Pruebas encontrar máximo:";
+$array = [3, 5, 7, 2, 8];
+//EJ5
+$usuarios = [
+    ['nombre' => 'Ana', 'edad' => 25, 'activo' => true],
+    ['nombre' => 'Juan', 'edad' => 17, 'activo' => true],
+    ['nombre' => 'Pedro', 'edad' => 35, 'activo' => false],
+    ['nombre' => 'Sofía', 'edad' => 22, 'activo' => true]
+];
+$resultado = filtrarUsuariosActivosMayores($usuarios);
+echo "<br><br>Usuarios activos mayores de edad:";
+foreach ($resultado as $usuario) {
+    echo "<br>Nombre: " . $usuario['nombre'] . ", Edad: " . $usuario['edad'];
+}
