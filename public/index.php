@@ -1,36 +1,24 @@
 <?php
-    define("SITE_NAME", "TaskFlow");
-    $pageTitle = SITE_NAME . " - Página de Inicio";
 
-    $userName = "Lolo Calvo"; // Tipo String
-    $userAge = 35;             // Tipo Integer
-    $isPremiumUser = true;     // Tipo Boolean
+require_once '../app/functions.php';
 
-    $tasks = [
+$tareas = [
+    ['titulo' => 'Configurar el entorno de desarrollo', 'completado' => false, 'prioridad' => 'alta'],
+    ['titulo' => 'Crear la estructura de carpetas', 'completado' => false, 'prioridad' => 'alta'],
+    ['titulo' => 'Diseñar la base de datos', 'completado' => false, 'prioridad' => 'media'],
+    ['titulo' => 'Implementar el sistema de login', 'completado' => false, 'prioridad' => 'alta'],
+    ['titulo' => 'Crear la vista de tareas', 'completado' => false, 'prioridad' => 'baja']
+];
 
-        ["title" => "Programar", "completed" => false, "priority" => "alta"],
-        ["title" => "Reunión", "completed" => false, "priority" => "media"],
-        ["title" => "Descansar", "completed" => false, "priority" => "alta"]        
-    ];
+
+include '../app/views/header.php';
 ?>
 
-
-
-
-<include /app/views/header.php; ?>
-
+<h2>Tareas Pendientes</h2>
 <ul>
-    <?php
-    foreach ($tasks as $task) {
-        $taskClasses = "task-item";
-        if ($task["completed"]) {
-            $taskClasses .= " completed";
-        }
-        echo "<li class='{$taskClasses}'>";
-        echo "<strong>" . $task["title"] . "</strong> - Prioridad: " . $task["priority"];
-        echo "</li>";
-    }
-    ?>
+    <?php foreach ($tareas as $tarea) : ?>
+        <?php echo renderizarTarea($tarea); ?>
+    <?php endforeach; ?>
 </ul>
 
-<include 'app/views/footer.php'; ?>
+<?php include '../app/views/footer.php'; ?>
